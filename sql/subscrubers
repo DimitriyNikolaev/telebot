@@ -1,0 +1,17 @@
+﻿create table subscribers(
+	id serial not null,
+	telegram_uid integer not null,
+	user_name character varying(80) not null,
+	first_name character varying(80) not null,
+	last_name character varying(80) not null,
+	CONSTRAINT subscribers_pkey PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE subscribers
+  OWNER TO postgres;
+CREATE INDEX subscribers_uids
+  ON subscribers
+  USING btree
+  (telegram_uid);
